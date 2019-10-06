@@ -28,6 +28,6 @@ dag =  DAG('BradPittDags',
 	max_active_runs = 1
 	)
 
-gif = KubernetesPodOperator(namespace='airflow', image='slackdag:latest', cmds = ['python', '/dags/slacktestBAD.py'],
+gif = KubernetesPodOperator(namespace='airflow', image='slackdag:latest', cmds = ['python'], arguments=['/dags/slacktestBAD.py'],
 	dag=dag, name='gif', task_id='gif', get_logs=True)
 # gif = PythonOperator(task_id='motherfucking_dags', python_callable=post_slack_msg, provide_context=False, dag=dag)
